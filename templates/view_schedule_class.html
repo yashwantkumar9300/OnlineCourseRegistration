@@ -1,0 +1,52 @@
+
+{% extends 'common.html' %}
+{% block yash %}
+    {% load static %}
+    {% include 'admin_menu.html' %}
+    <style>
+        .heading{
+            text-align: center;
+            font-size: 20px;
+            background-color: lightgreen;
+        }
+    </style>
+     {% if messages %}
+        {% for x in messages %}
+            <h3 style="text-align: center; color: fuchsia">
+                {{ x }}
+            </h3>
+        {% endfor %}
+    {% endif %}
+    <br>
+    <table align="center" border="2" cellpadding="5">
+    <tr>
+        <th colspan="9" style="text-align: center;color: fuchsia;font-size: 30px;background-color: lightblue"> All Schedule Classes </th>
+    </tr>
+    <tr>
+        <th class="heading"> Idno </th>
+        <th class="heading"> Course Name </th>
+        <th class="heading"> Faculty Name </th>
+        <th class="heading"> Date </th>
+        <th class="heading"> Time </th>
+        <th class="heading"> Fees </th>
+        <th class="heading"> Duration </th>
+        <th class="heading" style="color: red"> Update </th>
+        <th class="heading" style="color: red"> Delete </th>
+    </tr>
+    {% for x in data %}
+        <tr>
+        <th> {{ x.idno }}</th>
+        <th> {{ x.cname }}</th>
+        <th> {{ x.fname }}</th>
+        <th> {{ x.date }}</th>
+        <th> {{ x.time }}</th>
+        <th> {{ x.fees }}</th>
+        <th> {{ x.duration }}</th>
+        <th> <a href="{% url 'update_schedule' %}?no={{ x.idno }}"> Update </a> </th>
+        <th> <a href="{% url 'delete_schedule' %}?no={{ x.idno }}"> Delete </a> </th>
+        </tr>
+    {% endfor %}
+    </table>
+
+    <br><br>
+{% endblock %}

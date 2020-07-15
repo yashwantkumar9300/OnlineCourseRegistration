@@ -1,0 +1,104 @@
+
+{% extends 'common.html' %}
+    {% block yash %}
+        {% load static %}
+        {% include 'main_menu.html' %}
+        <script src="{% static 'js/sample.js'%}"></script>
+
+        {% if messages %}
+        {% for x in messages %}
+            <h3 style="text-align: center; color: fuchsia">
+                {{ x }}
+            </h3>
+        {% endfor %}
+    {% endif %}
+
+     <form action="{% url 'Student_save' %}" method="post">
+     {% csrf_token %}
+    <table align="center" border="0" width="350" cellpadding="10">
+     <tr>
+         <th> <img src="{% static 'images/images.jpg' %}" height="80" width="330"> </th>
+     </tr>
+        <tr> <th> </th></tr>
+    <tr>
+        <th>
+            <input class="form-control" type="text" placeholder="Full Name" id="t1" name="t1" required pattern="[A-Za-z- ]+" title= "Alphabets only" onchange="myFunction(id)">
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <select class="form-control" name="t2" required>
+            <option> --select Gender-- </option>
+            <option> Male </option>
+            <option> Female </option>
+            <option> Others </option>
+            </select>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input class="form-control" type="tel" placeholder="Contact No" name="t3" required maxlength="10" pattern="[6789][0-9]{9}">
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input class="form-control" type="email" placeholder="Email-Id" name="t4" required id="t4" onchange="validate(id)">
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input class="form-control" type="password" placeholder="Password" id="password" name="t5" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input class="form-control" type="password" placeholder="Confirm Password" id="confirm_password" name="t6" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+        </th>
+    </tr>
+    <tr>
+        <th style="padding-left: 40px">
+            <input type="checkbox" class="form-check-input" onclick="show_password()"> Show Password
+            <span style="padding-left: 130px">
+                <button type="button" class="btn btn-outline-danger" style="width: 30px;height: 30px;alignment: right;" onclick="show()"> ? </button></span>
+        </th>
+    </tr>
+    <tr>
+        <th style="text-align: center; padding: 10px">
+            <button type="submit" class="btn btn-outline-success"> Register </button> &nbsp;&nbsp;&nbsp;
+            <button type="reset" class="btn btn-outline-warning"> Reset </button>
+        </th>
+    </tr>
+    </table>
+    </form>
+
+    <script>
+    function show_password()
+            {
+                var y = document.getElementById("password");
+                if(y.type == "password")
+                {
+                    y.type = "text"
+                }
+                else
+                {
+                    y.type = "password"
+                }
+            }
+
+     function validatePassword()
+    {
+        var password = document.getElementById("password"),confirm_password = document.getElementById
+        ("confirm_password");
+        if(password.value != confirm_password.value)
+        {
+            confirm_password.setCustomValidity("Invalid Confirm Password");
+        }
+        else
+        {
+         confirm_password.setCustomValidity('');
+        }
+        }
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>
+{% endblock %}

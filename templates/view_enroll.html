@@ -1,0 +1,46 @@
+
+{% extends 'common.html' %}
+{% block yash %}
+    {% load static %}
+    {% include 'student_menu.html' %}
+    <style>
+        .heading{
+            text-align: center;
+            font-size: 20px;
+            background-color: lightgreen;
+        }
+    </style>
+     {% if messages %}
+        {% for x in messages %}
+            <h3 style="text-align: center; color: fuchsia">
+                {{ x }}
+            </h3>
+        {% endfor %}
+    {% endif %}
+
+    <br>
+    <table align="center" border="2" cellpadding="5">
+    <tr>
+        <th colspan="9" style="text-align: center;color: fuchsia;font-size: 30px;background-color: lightblue"> Enrolled Courses </th>
+    </tr>
+    <tr>
+        <th class="heading"> Course Name </th>
+        <th class="heading"> Faculty Name </th>
+        <th class="heading"> Time </th>
+        <th class="heading"> Fees </th>
+        <th class="heading"> Duration </th>
+    </tr>
+    {% for x in enroll %}
+        <tr>
+        <th> {{ x.cname }}</th>
+        <th> {{ x.fname }}</th>
+        <th> {{ x.time }}</th>
+        <th> {{ x.fees }}</th>
+        <th> {{ x.duration }}</th>
+        </tr>
+    {% endfor %}
+    </table>
+
+    <br><br>
+
+{% endblock %}

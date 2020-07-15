@@ -1,0 +1,24 @@
+
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'admin_home' %}"> &nbsp;&nbsp;&nbsp; <img src="{% static 'images/h2.png' %}" width="30" height="30"> </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'schedule_class' %}"> Schedule New Class </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'view_schedule_class' %}"> View All Schedule Classes </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'view_student' %}"> View All Students </a>
+      </li>
+      <li class="nav-item">
+        <a style="color: red" class="nav-link" href="{% url 'admin_login' %}"> Logout </a>
+      </li>
+    </ul>
+  </div>
+</nav>

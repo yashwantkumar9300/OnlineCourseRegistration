@@ -1,0 +1,30 @@
+
+{% extends 'common.html' %}
+    {% block yash %}
+        {% load static %}
+        {% include 'main_menu.html' %}
+        <br>
+        <table align="center">
+        <tr> <th>
+        <div class="card" style="width: 30rem;alignment: center;position: center">
+        <div class="card-body"style="alignment: center;">
+        <h5 class="card-title"> Our Location: </h5>
+        <h5 class="card-title"> YASH Technologies </h5>
+        <h5 class="card-title"> The Best Software Training Institute in Raipur, Chhattisgarh </h5>
+        <h6 class="card-subtitle mb-2 text-muted">2nd Floor, Sai Complex,<br>
+        Beside Aditya Trade Centre, Raipur,<br>
+        Raipur- C.G. State, PIN-491201. INDIA</h6>
+        <p class="card-text"><img src="{% static 'images/contact.png' %}" width="30" height="30">  IND: +91 8435561043 , +91 9691060747 </p>
+        <p class="card-text"><img src="{% static 'images/contact.png' %}" width="30" height="30">  USA: +1 202 203 8999 </p>
+        <p class="card-text"> <img src="{% static 'images/mail.png' %}" width="40" height="40">  info@yashkumar.com </p>
+
+        <h5 class="card-title">Business Hours </h5>
+        <h5 class="card-title"> <img src="{% static 'images/time icon.png' %}" width="20" height="20">  Monday – Saturday: 7am to 9pm IST </h5>
+        <h5 class="card-title"> <img src="{% static 'images/time icon.png' %}" width="20" height="20">  Sunday – Closed </h5>
+    </div>
+    </div> </th>
+      </tr>
+    </table>
+
+    <br><br>
+{% endblock %}

@@ -1,0 +1,57 @@
+
+{% extends 'common.html' %}
+{% block yash %}
+    {% load static %}
+    {% include 'admin_menu.html' %}
+    <script src="{% static 'js/sample.js'%}"></script>
+    <br>
+    <form action="{% url 'update_class' %}" method="post">
+     {% csrf_token %}
+    <table align="center" border="2" width="350" cellpadding="10">
+     <tr>
+         <th style="font-size: 30px; font-family: 'Times New Roman';text-align: center;background-color: mintcream;color: blue"> Update Schedule Class  </th>
+     </tr>
+    <tr>
+        <th>
+            <input class="form-control" type="number" value="{{ data.idno }}" name="t1" readonly hidden >
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input class="form-control" type="text" placeholder="Course Name" value="{{ data.cname }}" id="t1" name="t2" required pattern="[A-Za-z- ]+" title= "Alphabets only" onchange="myFunction(id)">
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input class="form-control" type="text" placeholder="Faculty Name" value="{{ data.fname }}" id="t2" name="t3" required pattern="[A-Za-z- ]+" title= "Alphabets only" onchange="myFunction(id)">
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input class="form-control" type="date" placeholder="Date" value="{{ data.date }}" name="t4" required>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input class="form-control" type="time" placeholder="Time" value="{{ data.time }}" name="t5" required>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input class="form-control" type="number" placeholder="Fees" value="{{ data.fees }}" name="t6" required min="1000">
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input class="form-control" type="number" placeholder="Duration" value="{{ data.duration }}" name="t7" required min="1">
+        </th>
+    </tr>
+    <tr>
+        <th style="text-align: center; padding: 10px">
+            <button type="submit" class="btn btn-outline-success"> Update </button>
+        </th>
+    </tr>
+    </table>
+    </form>
+    <br><br>
+{% endblock %}

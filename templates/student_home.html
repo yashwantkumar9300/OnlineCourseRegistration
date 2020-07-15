@@ -1,0 +1,12 @@
+
+{% extends 'common.html' %}
+    {% block yash %}
+        {% load static %}
+        {% include 'student_menu.html' %}
+        <script src="{% static 'js/sample.js'%}"></script>
+        <h5 style="text-align: right;color: blue;padding-right: 10px">Welcome Mr/Miss - {{ data.sname }}</h5>
+        <div style="text-align: center; alignment: center">
+            <img src="{% static 'images/stu.png' %}" style="width: 900px; height: 550px;">
+        </div>
+
+{% endblock %}

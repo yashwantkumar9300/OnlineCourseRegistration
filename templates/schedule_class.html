@@ -1,0 +1,60 @@
+
+{% extends 'common.html' %}
+{% block yash %}
+    {% load static %}
+    {% include 'admin_menu.html' %}
+    <script src="{% static 'js/sample.js'%}"></script>
+    <br>
+    {% if messages %}
+        {% for x in messages %}
+            <h3 style="text-align: center; color: fuchsia">
+                {{ x }}
+            </h3>
+        {% endfor %}
+    {% endif %}
+    <form action="{% url 'save_schedule' %}" method="post">
+     {% csrf_token %}
+    <table align="center" border="2" width="350" cellpadding="10">
+     <tr>
+         <th style="font-size: 30px; font-family: 'Times New Roman';text-align: center;background-color: mintcream;color: blue"> Schedule New Class  </th>
+     </tr>
+    <tr>
+        <th>
+            <input class="form-control" type="text" placeholder="Course Name" id="t1" name="t1" required pattern="[A-Za-z- ]+" title= "Alphabets only" onchange="myFunction(id)">
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input class="form-control" type="text" placeholder="Faculty Name" id="t2" name="t2" required pattern="[A-Za-z- ]+" title= "Alphabets only" onchange="myFunction(id)">
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input class="form-control" type="date" placeholder="Date" name="t3" required>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input class="form-control" type="time" placeholder="Time" name="t4" required>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input class="form-control" type="number" placeholder="Fees" name="t5" required min="1000">
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input class="form-control" type="number" placeholder="Duration" name="t6" required min="1">
+        </th>
+    </tr>
+    <tr>
+        <th style="text-align: center; padding: 10px">
+            <button type="submit" class="btn btn-outline-success"> Register </button> &nbsp;&nbsp;&nbsp;
+            <button type="reset" class="btn btn-outline-warning"> Reset </button>
+        </th>
+    </tr>
+    </table>
+    </form>
+    <br><br>
+{% endblock %}

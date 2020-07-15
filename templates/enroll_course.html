@@ -1,0 +1,63 @@
+
+{% extends 'common.html' %}
+{% block yash %}
+    {% load static %}
+    {% include 'student_menu.html' %}
+    <style>
+        .heading{
+            text-align: center;
+            font-size: 20px;
+            background-color: lightgreen;
+        }
+    </style>
+     {% if messages %}
+        {% for x in messages %}
+            <h3 style="text-align: center; color: fuchsia">
+                {{ x }}
+            </h3>
+        {% endfor %}
+    {% endif %}
+
+    <br>
+    <table align="center" border="2" cellpadding="5">
+    <tr>
+        <th colspan="9" style="text-align: center;color: fuchsia;font-size: 30px;background-color: lightblue"> Available Courses </th>
+    </tr>
+    <tr>
+        <th class="heading"> Idno </th>
+        <th class="heading"> Course Name </th>
+        <th class="heading"> Faculty Name </th>
+        <th class="heading"> Date </th>
+        <th class="heading"> Time </th>
+        <th class="heading"> Fees </th>
+        <th class="heading"> Duration </th>
+        <th class="heading" style="color: fuchsia"> Enroll Now </th>
+    </tr>
+    {% for x in info %}
+        <tr>
+        <th> {{ x.idno }}</th>
+        <th> {{ x.cname }}</th>
+        <th> {{ x.fname }}</th>
+        <th> {{ x.date }}</th>
+        <th> {{ x.time }}</th>
+        <th> {{ x.fees }}</th>
+        <th> {{ x.duration }}</th>
+        <th>
+        <form action="{% url 'save_enroll' %}" method="post">
+            {% csrf_token %}
+                <input type="hidden" name="t1" value="{{ x.cname }}">
+                <input type="hidden" name="t2" value="{{ x.fname }}">
+                <input type="hidden" name="t3" value="{{ x.time }}">
+                <input type="hidden" name="t4" value="{{ x.fees }}">
+                <input type="hidden" name="t5" value="{{ x.duration }}">
+                <input type="hidden" name="t6" value="{{ data.idno }}">
+                <button type="submit" class="btn btn-outline-primary"> Enroll Now </button>
+            </form>
+        </th>
+        </tr>
+    {% endfor %}
+    </table>
+
+    <br><br>
+
+{% endblock %}

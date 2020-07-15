@@ -1,0 +1,38 @@
+
+
+{% extends 'common.html' %}
+{% block yash %}
+    {% load static %}
+    {% include 'admin_menu.html' %}
+    <style>
+        .heading{
+            text-align: center;
+            font-size: 20px;
+            background-color: lightgreen;
+        }
+    </style>
+    <br>
+    <table align="center" border="2" cellpadding="5">
+    <tr>
+        <th colspan="9" style="text-align: center;color: fuchsia;font-size: 30px;background-color: lightblue"> All Students </th>
+    </tr>
+    <tr>
+        <th class="heading"> Idno </th>
+        <th class="heading"> Name </th>
+        <th class="heading"> Gender </th>
+        <th class="heading"> Contact No </th>
+        <th class="heading"> Email-Id </th>
+    </tr>
+    {% for x in data %}
+        <tr>
+        <th> {{ x.idno }}</th>
+        <th> {{ x.sname }}</th>
+        <th> {{ x.gender }}</th>
+        <th> {{ x.contact }}</th>
+        <th> {{ x.email }}</th>
+        </tr>
+    {% endfor %}
+    </table>
+
+    <br><br>
+{% endblock %}
